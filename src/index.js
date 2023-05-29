@@ -1,1 +1,11 @@
-console.log('Hello from Node JS');
+const express = require('express');
+
+const app = express();
+
+const port = 5000;
+
+app.get('/', (req, res) => {
+   res.send('Hello from Express'); 
+});
+
+app.listen(port, ()=> console.log(`The server is running on ${port} ...`))
