@@ -1,19 +1,19 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
-const path = require('path');
-const app = express();
+const app = express(); 
+
+// импортваме настройките на Еxpress от друг файл
+const expressConfig = require('./config/expressConfig');
+expressConfig(app);
+
+// инпортваме настройките за Handlebars от друг файл
+const handlebarsConfig = require('./config/handlebarsConfig');
+handlebarsConfig(app);
+
+
 const port = 5000;
 
-// Express config
-app.use(express.static(path.resolve(__dirname, 'public'))); // добаване на MIDDLEWARE -> използвай директорията 'public' за всички статични файлове
 
-// handlebars confing
-app.engine('hbs', handlebars.engine({
-extname: 'hbs',
-}));
 
-app.set('view engine', 'hbs');
-app.set('views', 'src/views'); // допълнителна настройка, за да може express-handlebars да намери папката
 
 // routes
 app.get('/', (req, res) => {
