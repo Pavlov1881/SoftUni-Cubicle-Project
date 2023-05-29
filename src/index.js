@@ -9,15 +9,10 @@ expressConfig(app);
 const handlebarsConfig = require('./config/handlebarsConfig');
 handlebarsConfig(app);
 
+const homeController = require('./controllers/homeController');
+app.use(homeController);
 
 const port = 5000;
 
-
-
-
-// routes
-app.get('/', (req, res) => {
-   res.render('index');
-});
 
 app.listen(port, ()=> console.log(`The server is running on ${port} ...`));
