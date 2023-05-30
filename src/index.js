@@ -15,6 +15,9 @@ app.use(homeController);
 const cubeController = require('./controllers/cubeController');
 app.use('/cubes', cubeController); // всяка заявка, която правиш към '/cubes', да бъде насочена към този контролер
 
+app.get('*', (req, res) => {
+    res.redirect('/404')
+});
 const port = 5000;
 
 
