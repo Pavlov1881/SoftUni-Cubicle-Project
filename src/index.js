@@ -1,24 +1,21 @@
 const express = require('express');
+
+const expressConfig = require('./config/expressConfig');
+const handlebarsConfig = require('./config/handlebarsConfig');
+const dbConnect = require('./config/dbConfig');
+const routes = require('./routes');
+
 const app = express();
 
-// импортваме настройките на Еxpress от друг файл
-const expressConfig = require('./config/expressConfig');
-expressConfig(app);
+const PORT = 5000;
 
-// инпортваме настройките за Handlebars от друг файл
-const handlebarsConfig = require('./config/handlebarsConfig');
+expressConfig(app);
 handlebarsConfig(app);
 
-const homeController = require('./controllers/homeController');
-app.use(homeController);
+dbConnect()
+    .then(() => console.log('DB Connected successfully'))
+    .catch(err => console.log('DB error: ', err.message));
 
-const cubeController = require('./controllers/cubeController');
-app.use('/cubes', cubeController); // всяка заявка, която правиш към '/cubes', да бъде насочена към този контролер
+app.use(routes);
 
-app.get('*', (req, res) => {
-    res.redirect('/404')
-});
-const port = 5000;
-
-
-app.listen(port, () => console.log(`The server is running on ${port} ...`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}...`));
