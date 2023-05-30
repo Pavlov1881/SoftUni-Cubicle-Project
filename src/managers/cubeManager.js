@@ -1,6 +1,6 @@
 const cubes = [];
 
-exports.getAll() = () => cubes.slice();
+exports.getAll = () => cubes.slice()
 
 exports.create = (cubeData) => {
     const newCube = {
