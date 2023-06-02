@@ -14,7 +14,7 @@ const PORT = 5000;
 dbConnect()
     .then(() => console.log('DB connected successfuly'))
     .catch(err => {
-        console.log('DB error', err)
+        console.log('DB error: ', err)
     });
 
 expressConfig(app);
