@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-const uri = 'mongodb://127.0.0.1:27017/cubicle-may-2023';
+// const uri = 'mongodb://127.0.0.1:27017/cubicle-may-2023';
 
 async function dbConnect() {
-    await mongoose.connect(uri);
+    await mongoose.connect('mongodb://127.0.0.1:27017/cubicle-may-2023');
 }
+
+dbConnect();
 
 module.exports = dbConnect;
