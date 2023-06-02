@@ -30,7 +30,7 @@ router.get('/:cubeId/details', (req, res) => {
     if (!cube) {
         return res.redirect('/404');
     }
-
+    
     res.render('details', { cube });
 });
 
